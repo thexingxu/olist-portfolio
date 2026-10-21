@@ -65,3 +65,5 @@ Tracking mature cohorts (Jan 2017 – Aug 2017) across a full 12-month horizon r
 │       └── olist_cumulative_ltv_trajectory.png
 ├── .gitignore             # Data and environment exclusions
 └── README.md              # Executive synthesis
+
+
