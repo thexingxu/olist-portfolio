@@ -41,9 +41,9 @@ Rather than treating the dataset as generic exploratory practice, this project e
 2. **Logistics & Defect Elasticity:** Seller dispatch is lean (~1.8 days median), but long-haul carrier transit (~7.2 days median) across Brazil's regional corridors drives >70% of fulfillment lead time. When delivery slips past the checkout SLA, customer satisfaction falls off an operational cliff: ratings drop from **4.29/5 to 1.68/5**, with **68% generating 1-star reviews**.
 3. **Behavioral Segmentation:** Forcing standard RFM quartile frequency splits fails when frequency is uniform ($F = 1$). A modified hybrid framework combining Recency, Monetary spend, Installment depth, and Freight burden isolates four distinct behavioral personas—identifying that platform GMV is disproportionately anchored by credit-financed installment buyers.
 
----
-
 ## Repository Structure
+
+```text
 ├── notebooks/
 │   ├── 01_retention_and_ltv.ipynb                 # Cohort retention, 12M LTV decay, CAC headroom
 │   ├── 02_logistics_and_defect_analysis.ipynb     # Lead-time decomposition, defect inflection curves
@@ -51,8 +51,7 @@ Rather than treating the dataset as generic exploratory practice, this project e
 ├── requirements.txt                              # Pinned Python package dependencies
 ├── README.md                                     # Executive summary and portfolio documentation
 └── .gitignore                                    # Production git exclusion rules
-
----
+```
 
 ## Detailed Case Studies
 
