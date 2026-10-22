@@ -1,69 +1,108 @@
-# Olist Marketplace: Strategic Unit Economics & Retention Architecture
+# Olist E-Commerce Analytics: Unit Economics, Logistics SLA & Customer Behavioral Segmentation
 
-An end-to-end analytical project assessing customer retention decay, 12-month realized lifetime value (LTV), and allowable Customer Acquisition Cost (CAC) thresholds across ~96,000 delivered orders on the Brazilian e-commerce platform Olist (2017–2018).
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
----
+An end-to-end commercial and operational data science portfolio investigating **100k+ real-world Brazilian marketplace transactions** (Olist, 2017–2018). 
 
-## 1. Executive Summary
-
-* **One-and-Done Platform Reality:** Month 1 customer retention across all cohorts drops below **0.70%**, plateauing at **~0.20%–0.40%** through Month 12. Olist operates primarily as a high-intent acquisition channel rather than a repeat-purchase destination.
-* **Frontloaded Value Realization:** **97.8%** of 12-month Gross Merchandise Value (GMV) per customer is realized during the initial purchase (Month 0). Repeat orders generate negligible incremental revenue over a 12-month horizon.
-* **Strict CAC Ceiling:** Assuming a standard **15% marketplace take rate** and a target **3:1 LTV:CAC ratio**, the maximum allowable CAC is **R$ 8.16**. Any customer acquisition channel spending above this ceiling operates at a structural unit-level deficit unless order frequency or cross-selling is re-engineered.
+Rather than treating the dataset as generic exploratory practice, this project evaluates the marketplace through the lens of executive decision-making across three interconnected pillars: **Unit Economics & Retention**, **Logistics Lead-Time & Review Risk**, and **Behavioral Segmentation Under Extreme Purchase Skew**.
 
 ---
 
-## 2. Retention Decay Analysis
+## Executive Summary & Core Insights
+THE MARKETPLACE FLYWHEEL CONSTRAINTS
+               
+ +-----------------------------------------------------------+
+ |                  Unit Economics Gate                      |
+ |   • 97% single-transaction customers                      |
+ |   • 12-month LTV: R$ 24.72 gross margin contribution      |
+ |   • Maximum Allowable CAC: R$ 8.16 (at 3:1 LTV:CAC target)|
+ +-----------------------------+-----------------------------+
+                               |
+                               v
+ +-----------------------------------------------------------+
+ |                 Logistics Defect Risk                     |
+ |   • 65% interstate fulfillment dependency                 |
+ |   • Late deliveries drop average review score to 1.68/5   |
+ |   • 68% of delayed orders result in a 1-star review       |
+ +-----------------------------+-----------------------------+
+                               |
+                               v
+ +-----------------------------------------------------------+
+ |              Actionable Customer Personas                 |
+ |   • Standard RFM fails due to constant Frequency (F=1)    |
+ |   • High-ticket spend is driven by installment depth (6-10x)
+ |   • Free-freight thresholds required to convert low-basket|
+ +-----------------------------------------------------------+
 
-Across 2017 to 2018 monthly acquisition cohorts, customer tenure exhibits immediate attrition following the first delivery:
-
-![Cohort Retention Heatmap](reports/figures/olist_retention_heatmap.png)
-
-### Core Observations
-* **Immediate Churn:** Across cohorts, 99.3%+ of newly acquired users do not make a second transaction within 30 days.
-* **Stable Tail:** The small retained base (0.2%–0.5%) remains relatively consistent between Months 3 and 12, reflecting a tiny segment of recurring institutional or power buyers.
-* **Marketing Implication:** Conventional retention marketing (e.g., blanket email campaigns, generic discounts) yields minimal marginal lift. Marketing spend must be evaluated against single-order payback rather than multi-year repeat assumptions.
-
----
-
-## 3. Cumulative Realized LTV & Allowable CAC
-
-Tracking mature cohorts (Jan 2017 – Aug 2017) across a full 12-month horizon reveals how cumulative spend evolves:
-
-![Cumulative Realized LTV Trajectory](reports/figures/olist_cumulative_ltv_trajectory.png)
-
-### Unit Economics Breakdown
-
-| Metric | Value (BRL) | Description |
-| :--- | :--- | :--- |
-| **Month 0 GMV per Customer** | **R$ 159.95** | Baseline transaction value at acquisition |
-| **12-Month Cumulative GMV (LTV)** | **R$ 163.53** | Total realized spend per customer after 12 months |
-| **Incremental Repeat Contribution** | **R$ 3.58 (2.2%)** | Marginal GMV added from Month 1 to Month 12 |
-| **Platform Take Rate (Assumption)** | **15.0%** | Estimated net marketplace commission |
-| **Platform 12-Month Net Revenue** | **R$ 24.53** | `Cumulative GMV × 15%` |
-| **Target LTV:CAC Ratio** | **3.0 : 1** | Sustainable growth benchmark |
-| **Maximum Allowable CAC** | **R$ 8.16** | Upper limit on blended acquisition spend |
-
----
-
-## 4. Strategic Recommendations
-
-1. **Shift to Transactional Acquisition Discipline:** Underwrite paid acquisition channels strictly against **Day 0 gross profit contribution** rather than multi-year expected LTV.
-2. **Category-Specific Subscription & Reorder Loops:** Repeat purchases are rare in durable goods (furniture, appliances). Re-engagement capital should focus selectively on fast-depleting consumables (beauty, health, pet care).
-3. **Cross-Selling at Checkout:** Because secondary conversion is low, average order value (AOV) expansion must occur during the initial order flow (bundle recommendations, minimum order value thresholds for free delivery).
+1. **Retention & Unit Economics:** Olist operates as an acquisition-dependent discovery engine rather than a habitual repeat-purchase platform (~97% one-time buyers). With a 12-month cumulative gross margin LTV of **R$ 24.72**, customer acquisition cost (CAC) must be held strictly below **R$ 8.16** to sustain an institutional 3:1 LTV:CAC ratio.
+2. **Logistics & Defect Elasticity:** Seller dispatch is lean (~1.8 days median), but long-haul carrier transit (~7.2 days median) across Brazil's regional corridors drives >70% of fulfillment lead time. When delivery slips past the checkout SLA, customer satisfaction falls off an operational cliff: ratings drop from **4.29/5 to 1.68/5**, with **68% generating 1-star reviews**.
+3. **Behavioral Segmentation:** Forcing standard RFM quartile frequency splits fails when frequency is uniform ($F = 1$). A modified hybrid framework combining Recency, Monetary spend, Installment depth, and Freight burden isolates four distinct behavioral personas—identifying that platform GMV is disproportionately anchored by credit-financed installment buyers.
 
 ---
 
-## 5. Repository Structure
-
-```text
-├── data/                  # Raw Olist CSV files (excluded via .gitignore)
+## Repository Structure
 ├── notebooks/
-│   └── 01_retention_and_ltv.ipynb   # Complete ETL, cohort modeling & visualization
-├── reports/
-│   └── figures/           # Exported visual deliverables
-│       ├── olist_retention_heatmap.png
-│       └── olist_cumulative_ltv_trajectory.png
-├── .gitignore             # Data and environment exclusions
-└── README.md              # Executive synthesis
+│   ├── 01_retention_and_ltv.ipynb                 # Cohort retention, 12M LTV decay, CAC headroom
+│   ├── 02_logistics_and_defect_analysis.ipynb     # Lead-time decomposition, defect inflection curves
+│   └── 03_rfm_and_customer_segmentation.ipynb    # Hybrid RFM, K-Means clustering, persona profiling
+├── requirements.txt                              # Pinned Python package dependencies
+├── README.md                                     # Executive summary and portfolio documentation
+└── .gitignore                                    # Production git exclusion rules
+
+---
+
+## Detailed Case Studies
+
+### 1. Customer Lifetime Value (LTV) & Acquisition Headroom
+* **Notebook:** `notebooks/01_retention_and_ltv.ipynb`
+* **Methodology:** Time-based cohort tracking (monthly cohorts across 2017–2018; 2016 excluded as pre-scale beta period). Evaluated repeat transaction rates and cumulative gross margin expansion over 3, 6, and 12-month horizons.
+* **Findings:** 
+  * Repeat transaction velocity plateaus within 60–90 days post-initial order.
+  * Over 97% of unique buyers never return to the platform.
+  * Platform survival depends entirely on first-order contribution margin profitability rather than downstream retention recovery.
+
+### 2. Logistics SLA Decomposition & Review Score Risk
+* **Notebook:** `notebooks/02_logistics_and_defect_analysis.ipynb`
+* **Methodology:** Lifecycle timestamp parsing (`approved_at` $\rightarrow$ `carrier_date` $\rightarrow$ `customer_delivered_date`). Modeled the non-linear relationship between delivery delta ($\text{Actual} - \text{Estimated}$) and review sentiment. Route classification (intrastate vs. interstate).
+* **Findings:**
+  * **Carrier Bottleneck:** Carrier transit represents ~72% of total lead time; seller fulfillment handling contributes less than 18%.
+  * **The SLA Cliff:** On-time orders average 4.29 stars (5% 1-star share). Defect orders (>0 days late) drop to 1.68 stars (68% 1-star share).
+  * **Regional Infrastructure Drag:** Interstate corridors (65% of volume) double median transit days (~9.5 vs. ~4.8 days) and yield defect rates exceeding 15–20% in destination states across the North and Northeast (e.g., AL, MA, BA).
+
+### 3. Customer Behavioral Segmentation & K-Means Clustering
+* **Notebook:** `notebooks/03_rfm_and_customer_segmentation.ipynb`
+* **Methodology:** Consolidated data at the `customer_unique_id` grain. Engineered Recency, Monetary spend, Basket size, Freight ratio, and Installment depth. Applied log-transforms, `StandardScaler`, and K-Means clustering with Elbow and Silhouette ($N=10,000$ stratified sample) diagnostic checks.
+* **Findings:**
+  * Identified 4 primary operational personas:
+    * **High-Ticket Installment Buyers:** Minority volume, dominant GMV contributors; heavily reliant on 6–10 payment installments.
+    * **Freight-Burdened Low-Basket:** Friction-sensitive users whose shipping costs exceed 30–45% of total basket value.
+    * **Recent Active Buyers:** Low recency one-time shoppers prime for automated post-purchase cross-selling.
+    * **Dormant / Lapsed Single-Order:** High-recency shoppers that represent unviable re-targeting ROI under tight CAC constraints.
+
+---
+
+## Setup & Execution
+
+### Prerequisites
+* Python 3.10+
+* Virtual environment tool (`venv` or `conda`)
+
+### Local Setup
+```bash
+# 1. Clone the repository
+git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+
+# 2. Create and activate virtual environment
+python -m venv .venv
+# On Windows PowerShell:
+.venv\Scripts\Activate.ps1
+# On macOS/Linux:
+source .venv/bin/activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
 
 
