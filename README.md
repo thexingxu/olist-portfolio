@@ -8,33 +8,34 @@ An end-to-end commercial and operational data science portfolio investigating **
 
 Rather than treating the dataset as generic exploratory practice, this project evaluates the marketplace through the lens of executive decision-making across three interconnected pillars: **Unit Economics & Retention**, **Logistics Lead-Time & Review Risk**, and **Behavioral Segmentation Under Extreme Purchase Skew**.
 
----
+### Marketplace Strategic Constraints
 
-## Executive Summary & Core Insights
-THE MARKETPLACE FLYWHEEL CONSTRAINTS
-               
- +-----------------------------------------------------------+
- |                  Unit Economics Gate                      |
- |   • 97% single-transaction customers                      |
- |   • 12-month LTV: R$ 24.72 gross margin contribution      |
- |   • Maximum Allowable CAC: R$ 8.16 (at 3:1 LTV:CAC target)|
- +-----------------------------+-----------------------------+
-                               |
-                               v
- +-----------------------------------------------------------+
- |                 Logistics Defect Risk                     |
- |   • 65% interstate fulfillment dependency                 |
- |   • Late deliveries drop average review score to 1.68/5   |
- |   • 68% of delayed orders result in a 1-star review       |
- +-----------------------------+-----------------------------+
-                               |
-                               v
- +-----------------------------------------------------------+
- |              Actionable Customer Personas                 |
- |   • Standard RFM fails due to constant Frequency (F=1)    |
- |   • High-ticket spend is driven by installment depth (6-10x)
- |   • Free-freight thresholds required to convert low-basket|
- +-----------------------------------------------------------+
+```text
+                   THE MARKETPLACE FLYWHEEL CONSTRAINTS
+                   
+     +-----------------------------------------------------------+
+     |                  Unit Economics Gate                      |
+     |   • 97% single-transaction customers                      |
+     |   • 12-month LTV: R$ 24.72 gross margin contribution      |
+     |   • Maximum Allowable CAC: R$ 8.16 (at 3:1 LTV:CAC target)|
+     +-----------------------------+-----------------------------+
+                                   |
+                                   v
+     +-----------------------------------------------------------+
+     |                 Logistics Defect Risk                     |
+     |   • 65% interstate fulfillment dependency                 |
+     |   • Late deliveries drop average review score to 1.68/5   |
+     |   • 68% of delayed orders result in a 1-star review       |
+     +-----------------------------+-----------------------------+
+                                   |
+                                   v
+     +-----------------------------------------------------------+
+     |              Actionable Customer Personas                 |
+     |   • Standard RFM fails due to constant Frequency (F=1)    |
+     |   • High-ticket spend is driven by installment depth (6-10x)
+     |   • Free-freight thresholds required to convert low-basket|
+     +-----------------------------------------------------------+
+```
 
 1. **Retention & Unit Economics:** Olist operates as an acquisition-dependent discovery engine rather than a habitual repeat-purchase platform (~97% one-time buyers). With a 12-month cumulative gross margin LTV of **R$ 24.72**, customer acquisition cost (CAC) must be held strictly below **R$ 8.16** to sustain an institutional 3:1 LTV:CAC ratio.
 2. **Logistics & Defect Elasticity:** Seller dispatch is lean (~1.8 days median), but long-haul carrier transit (~7.2 days median) across Brazil's regional corridors drives >70% of fulfillment lead time. When delivery slips past the checkout SLA, customer satisfaction falls off an operational cliff: ratings drop from **4.29/5 to 1.68/5**, with **68% generating 1-star reviews**.
